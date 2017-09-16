@@ -3,9 +3,7 @@
  */
 
 import Myjsonp from "jsonp"
-function playlistinfoCallback(a){
-  console.log(a)
-}
+
 export default function jsonp(url,data,option){
   url += (url.indexOf("?") == "-1" ? "?" : "&") + param(data)
   return new Promise((reslove,reject)=>{

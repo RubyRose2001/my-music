@@ -59,6 +59,7 @@
         }
     },
     created(){
+
       this.listenScroll=true;
       this.probeType=3
     },

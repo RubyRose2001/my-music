@@ -33,15 +33,15 @@ export const insertSong = function({ commit, state }, song) {
     let playlist = state.playlist.slice()
     let sequenceList = state.sequenceList.slice()
     let currentIndex = state.currentIndex
-        // 记录当前歌曲
+    // 记录当前歌曲
     let currentSong = playlist[currentIndex]
-        // 查找当前列表中是否有待插入的歌曲并返回其索引
+    // 查找当前列表中是否有待插入的歌曲并返回其索引
     let fpIndex = findindex(playlist, song)
-        // 因为是插入歌曲，所以索引+1
+    // 因为是插入歌曲，所以索引+1
     currentIndex++
     // 插入这首歌到当前索引位置
     playlist.splice(currentIndex, 0, song)
-        // 如果已经包含了这首歌
+    // 如果已经包含了这首歌
     if (fpIndex > -1) {
         // 如果当前插入的序号大于列表中的序号
         if (currentIndex > fpIndex) {
@@ -101,7 +101,6 @@ export const removeCookie = function({ commit, state }) {
     let cookie = removeAll()
     commit(types.SET_HISTORY, cookie)
 }
-
 export const removePlaylist = function({ commit, state }) {
     commit(types.SET_SEQUENCELIST, [])
     commit(types.SET_PLAYLIST, [])
@@ -109,23 +108,19 @@ export const removePlaylist = function({ commit, state }) {
     commit(types.SET_PlAYING, false)
     commit(types.SET_FULLSCREEN, false)
 }
-
 export const insertPlayHistory = function({ commit, state }, item) {
     let cookie = setPlayHistory(item)
     commit(types.SET_PLAY_HISTORY, cookie)
 }
-
 export const addCollectionSong = function({ commit, state }, item) {
     let cookie = addCollection(item)
     commit(types.SET_COLLECTION_SONG, cookie)
 }
-
 export const deleteCollectionSong = function({ commit, state }, item) {
     let index = findindex(state.collectionSong, item)
     let cookie = deletCollection(index)
     commit(types.SET_COLLECTION_SONG, cookie)
 }
-
 function findindex(item, song) {
     var num = item.findIndex(a => {
         return a.id === song.id
