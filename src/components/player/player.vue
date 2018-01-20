@@ -247,7 +247,6 @@
         return num
       },
       getlyric(){
-
         if(!this.playSong.getlyric)  return
         this.playSong.getlyric().then(res => {
             if(res === this.playSong.lyric){

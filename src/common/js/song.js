@@ -29,7 +29,6 @@ export default class Song{
    })
   }
 }
-
 export function createSong(songData){
   return new Song({
     id: songData.songid,
@@ -39,9 +38,10 @@ export function createSong(songData){
     album: songData.albumname,
     duration: songData.interval,
     image: `https://y.gtimg.cn/music/photo_new/T002R300x300M000${songData.albummid}.jpg?max_age=2592000`,
-    url: `http://ws.stream.qqmusic.qq.com/${songData.songid}.m4a?fromtag=46`
+    url: `http://isure.stream.qqmusic.qq.com/C100${songData.songmid}.m4a?fromtag=32`
   })
 }
+
 function filterSinger(data){
   let ret = []
   if(!data){

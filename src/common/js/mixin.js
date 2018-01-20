@@ -8,10 +8,10 @@ export const playMixin = {
         }
     },
     computed: {
-        ...mapGetters([
-            'playlist',
-            'playSong'
-        ])
+      ...mapGetters([
+          'playlist',
+          'playSong'
+      ])
     },
     mounted() {
         this.handlePlaylist(this.playlist)
