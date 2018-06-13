@@ -1,0 +1,15 @@
+{
+    "start_url": "../index.html",
+    "name": "music",
+    "short_name": "my-music",
+    "icons": [
+        {
+            "src": "images/default.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#278fef"
+}

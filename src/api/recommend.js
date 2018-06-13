@@ -13,7 +13,7 @@ export function getRecommend() {
 export function getList() {
     const url = "/api/getList";
     const data = Object.assign({}, commendParams, {
-        rnd: Math.random(),
+        // rnd: Math.random(),
         platform: 'yqq',
         notice: 0,
         needNewCode: 1,

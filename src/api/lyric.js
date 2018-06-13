@@ -10,7 +10,7 @@ export function lyric(id){
     hostUin: 0,
     needNewCode: 0,
     categoryId: 10000000,
-    pcachetime: +new Date(),
+    // pcachetime: +new Date(),
     format: 'json'
   },commendParams)
   return axios.get(url,{

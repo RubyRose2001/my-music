@@ -6,11 +6,44 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>vue-music</title>
+  <link rel="manifest" href="static/manifest.json">
 </head>
 <body>
   <div id="app">
 
   </div>
   <!-- built files will be auto injected -->
+  <script>
+    // alert(12);
+    const version = '1.0.4';
+    var deferredPrompt = null;
+    window.onload = function () {
+        var script = document.createElement('script');
+        var firstScript = document.getElementsByTagName('script')[0];
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '/sw-register.js?v='+ version;
+        firstScript.parentNode.insertBefore(script, firstScript);
+    };
+    window.addEventListener('beforeinstallprompt', function (e) {
+      alert('弹框阻止');
+      // 将事件返回存储起来
+      deferredPrompt = e;
+      e.preventDefault();
+      return false;
+    });
+    document.querySelector('#app').addEventListener('click', function () {
+      if (deferredPrompt != null) {
+        // 异步触发横幅显示
+        deferredPrompt.prompt();
+        // 检测用户的安装行为
+        deferredPrompt.userChoice.then(function (choiceResult) {
+          alert(choiceResult.outcome);
+        });
+
+        deferredPrompt = null;
+      }
+    });
+  </script>
 </body>
 </html>

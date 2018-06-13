@@ -2,6 +2,8 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var SwRegisterWebpackPlugin = require('sw-register-webpack-plugin');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -62,5 +64,24 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    // copy sw.js  path.resolve(__dirname, 'sw.js所在路径')
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../service-worker.js'),
+        to: config.build.assetsRoot,
+        ignore: ['.*']
+      },
+      {
+        from: path.resolve(__dirname, '../sw-register.js'),
+        to: config.build.assetsRoot,
+        ignore: ['.*']
+      },
+    ]),
+    new SwRegisterWebpackPlugin({
+      version: '1.0.4',
+      filePath: '../sw-register.js'
+    }),
+  ]
 }
